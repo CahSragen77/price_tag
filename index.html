@@ -21,7 +21,7 @@
                 <div id="connectionStatus" class="status-badge online">Status: Mengecek Koneksi...</div>
                 <div class="form-group">
                     <label>URL Web App Google Sheet (Deployment URL)</label>
-                    <input type="text" id="sheetsUrlInput" placeholder="Masukkan URL Google Apps Script Web App Anda" onchange="saveConfig()">
+                    <input type="text" id="sheetsUrlInput" placeholder="https://script.google.com/macros/s/AKfycbzDv1UqYpKqWVRLC9R5oP3h6T8dfcwnY5Df1Gkgd9qzkJheXe_oPTUvYehlChcG-hHr/exec" onchange="saveConfig()">
                 </div>
                 <button onclick="fetchOnlineData()" style="background-color: #17a2b8; margin-top:0;">🔄 Sinkronisasi Google Sheet</button>
                 <button id="btnUploadManual" onclick="uploadLocalToOnline()" style="background-color: #fd7e14; margin-top:0; display:none;">📤 Upload Manual Data Lokal ke Sheet</button>
