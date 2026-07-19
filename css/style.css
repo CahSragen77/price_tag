@@ -1,0 +1,138 @@
+body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input[type="text"], input[type="file"], select { width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #218838; }
+        .btn-print { background-color: #007bff; }
+        .btn-print:hover { background-color: #0056b3; }
+        .row { display: flex; flex-wrap: wrap; gap: 20px; }
+        .col { flex: 1; min-width: 250px; }
+        
+        /* Style Tambahan untuk Status Koneksi & Scanner */
+        .status-badge { display: inline-block; padding: 5px 10px; border-radius: 4px; font-weight: bold; margin-bottom: 10px; font-size: 14px; }
+        .online { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .offline { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        #scanner-container { width: 100%; max-width: 400px; margin: 10px auto; display: none; border: 2px dashed #007bff; padding: 10px; border-radius: 8px; background: #fff; }
+        
+        /* --- STYLE KHUSUS UNTUK CETAK (PRINT CSS) --- */
+        @media print {
+            body { margin: 0; padding: 0; background: white; }
+            .container, .row, .col, .form-group, button, h2, #uploadArea, .status-badge, #scanner-container { display: none !important; }
+            
+            #printArea { display: block !important; width: 100%; margin: 0; padding: 0; }
+            .pricetag-wrapper { display: flex; flex-wrap: wrap; justify-content: flex-start; page-break-after: avoid; }
+            
+            .pricetag-lg, .pricetag-sm {
+                margin: 2px;
+                padding: 3px 5px 0px 5px;
+                box-sizing: border-box;
+                position: relative;
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                page-break-inside: avoid;
+                border: 1px solid #000;
+                border-radius: 6px !important;
+                -webkit-print-color-adjust: exact; 
+            }
+
+            .pricetag-lg { width: 6.4cm; height: 3.5cm; }
+            .pricetag-sm { width: 3.9cm; height: 3.5cm; }
+
+            /* --- NAMA BARANG --- */
+            .p-top { 
+                text-align: center; 
+                font-size: 10px; 
+                line-height: 1.15; 
+                font-weight: bold;
+                height: 22%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                word-wrap: break-word;
+                padding: 0 2px;
+            }
+            .p-top-sm { font-size: 8px; height: 20%; line-height: 1.1; }
+
+            /* --- HARGA DAN SATUAN --- */
+            .p-harga { 
+                font-weight: 900; 
+                font-size: 26px; 
+                text-align: center; 
+                height: 28%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                letter-spacing: -1px;
+                padding: 2px 0;
+            }
+            .p-harga-sm { font-size: 18px; height: 25%; } 
+            .p-satuan { font-size: 14px; font-weight: bold; margin-left: 3px; }
+            .p-satuan-sm { font-size: 11px; }
+
+            /* --- BARCODE ASLI --- */
+            .p-barcode-area { 
+                height: 28%; 
+                display: flex; 
+                flex-direction: row; 
+                align-items: center; 
+                padding: 0 2px;
+                margin-bottom: 1px;
+            }
+            
+            .p-barcode-wrap {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center; 
+            }
+            
+            .p-barcode-wrap svg { 
+                width: 100%; 
+                height: 28px !important; 
+                display: block; 
+                max-width: 100%;
+            }
+            .p-barcode-text { font-size: 8.5px; letter-spacing: 0.5px; text-align: center; margin-top: 0px; }
+
+            /* --- LOGO (Hanya untuk Besar) --- */
+            .p-logo-area {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 35px;
+                margin-left: 2px;
+            }
+            .p-logo-svg { width: 25px; height: auto; fill: #00a2e8; }
+            .p-logo-text { font-size: 4.5px; color: #00a2e8; font-weight: bold; text-align: center; line-height: 1; margin-top: -2px; }
+            
+            /* --- GARIS --- */
+            .p-strip-container { width: 100%; display: flex; flex-direction: column; height: 12%; justify-content: flex-end; }
+            .p-line-blue { height: 3mm; background-color: #00a2e8; width: 100%; }
+            .p-gap { height: 1mm; width: 100%; } 
+            .p-line-red { height: 3mm; background-color: #ed1c24; width: 100%; }
+            
+            /* --- FOOTER --- */
+            .p-bottom-text { 
+                display: flex; justify-content: space-between; 
+                font-size: 7.5px; 
+                padding: 1px 2px 0 2px; 
+                color: #000;
+                font-weight: bold;
+                height: 10%;
+                align-items: flex-end;
+            }
+            .p-date { text-align: right; }
+
+            /* --- ATURAN KHUSUS LABEL KECIL --- */
+            .pricetag-sm .p-logo-area { display: none !important; }
+            .pricetag-sm .p-barcode-wrap { width: 100%; } 
+            .pricetag-sm .p-bottom-text { font-size: 6.5px; }
+        }
+
+        #printArea { display: none; }
